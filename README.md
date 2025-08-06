@@ -10,7 +10,7 @@ A modern, responsive portfolio website showcasing my expertise in Artificial Int
 
 ## 👨‍💻 About Me
 
-I'm Abdul Prada Mufid, an AI/ML Engineer and IBM Advanced AI Scholar with a passion for creating intelligent solutions. Currently pursuing Information Systems at STIKOM Yos Sudarso, I have achieved:
+I'm Prada Mufid, an AI/ML Engineer and IBM Advanced AI Scholar with a passion for creating intelligent solutions. Currently pursuing Information Systems at STIKOM Yos Sudarso, I have achieved:
 
 - **IBM Advanced AI Scholar** - Grade A (95/100) through Infinite Learning & MSIB Kampus Merdeka
 - **12+ IBM SkillsBuild Certifications** in AI, Machine Learning, and Data Science
