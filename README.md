@@ -1,4 +1,4 @@
-# Abdul Prada Mufid - Portfolio Website
+Prada Abdul Mufid - Portfolio Website
 
 > **AI/ML Engineer | IBM Advanced AI Scholar | Full-Stack Developer**
 
