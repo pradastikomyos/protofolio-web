@@ -6,7 +6,7 @@ A modern, responsive portfolio website showcasing my expertise in Artificial Int
 
 ## 🚀 Live Demo
 
-**URL**: [Portfolio Website](https://lovable.dev/projects/a4c08c3b-17bd-4bc1-8b4d-bc5f06bbe473)
+**URL**: [Portfolio Website](https://prada-protofolio-web.vercel.app/)
 
 ## 👨‍💻 About Me
 
