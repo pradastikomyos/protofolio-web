@@ -9,6 +9,17 @@ export const PortfolioSection = () => {
   const projects = [
     {
       id: 1,
+      title: "PlantWise - Advanced AI Plant Disease Detection",
+      description: "Enterprise-level AI plant disease detection system with crop recommendation using CNN and Random Forest algorithms",
+      fullDescription: "PlantWise is a comprehensive AI-powered platform that revolutionizes plant care through advanced computer vision and machine learning. As Machine Learning Operations Engineer in this collaborative project, I worked with ML engineers, web developers, mobile developers, and ML researchers to build a system that detects plant diseases with 92.5% accuracy using CNN models and provides crop recommendations with 89.7% accuracy using Random Forest. The platform processes over 87,000 plant images across 38 disease classes and integrates environmental parameters (temperature, humidity, pH) for intelligent crop suggestions. Deployed on IBM Cloud Code Engine using Docker containers with Flask backend and responsive frontend.",
+      technologies: ["Python", "TensorFlow", "Keras", "Flask", "IBM Cloud", "Docker", "CNN", "Random Forest"],
+      gradient: "from-green-50 via-emerald-50 to-teal-50",
+      logos: ["/python-logo.png", "/TensorFlow.png", "/Keras.png", "/IBM-logo.png"],
+      siteUrl: "https://github.com/SalsabilaDPH/Plantwise-AAI-Mobile-Web/tree/main/AAI",
+      githubUrl: "https://github.com/SalsabilaDPH/Plantwise-AAI-Mobile-Web"
+    },
+    {
+      id: 2,
       title: "NeatRepo",
       description: "A comprehensive GitHub portfolio organizer that helps developers clean up and organize their repositories to be job-ready",
       fullDescription: "NeatRepo is a modern web application designed specifically for developers who want to showcase their GitHub portfolio professionally. It features revolutionary bulk operations for repository management, visual drag-and-drop organization, AI-enhanced portfolio optimization, and enterprise-grade security with GitHub OAuth integration.",
@@ -19,7 +30,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/almond-donut/NeatRepo"
     },
     {
-      id: 2,
+      id: 3,
       title: "Thesis Genius Recommender",
       description: "AI-powered thesis topic recommendation system using K-Means clustering and LLM integration",
       fullDescription: "Thesis Genius is an intelligent recommendation system that helps students find personalized thesis topics based on their GPA, interests, and previous project summaries. The system uses K-Means clustering for data analysis and integrates with Gemini LLM to generate tailored thesis recommendations through a REST API.",
@@ -30,7 +41,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/almond-donut/thesis-genius-recommender-system"
     },
     {
-      id: 3,
+      id: 4,
       title: "Grammar Fixer Webapp",
       description: "Real-time grammar and spelling correction tool powered by Google Generative AI",
       fullDescription: "Grammar Fixer is an intelligent web application that automatically corrects grammar and spelling mistakes in real-time. It features debounced text processing, highlighted corrections, copy-to-clipboard functionality, and a responsive design that works across all devices. The app uses Google Generative AI for accurate text correction.",
@@ -41,7 +52,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/almond-donut/grammar-fixer-webapp"
     },
     {
-      id: 4,
+      id: 5,
       title: "Loveable English Spark",
       description: "Gamified English learning platform for SMK students with comprehensive teacher and student portals",
       fullDescription: "A complete gamification-based English learning platform designed for SMK students. Features include quiz management, interactive learning experiences, achievement systems, leaderboards, and real-time progress tracking. The platform includes separate portals for teachers and students with role-based access control.",
@@ -52,7 +63,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/gamification-english-app"
     },
     {
-      id: 5,
+      id: 6,
       title: "Grammar Fixer Chrome Extension",
       description: "Fast Chrome extension for quick grammar and typo correction using Google Gemini 2.0 Flash API",
       fullDescription: "A lightweight Chrome extension that provides instant grammar and spelling correction for Indonesian and English text. Features modern glassmorphism design, keyboard shortcuts, character counting, and seamless integration with Google Gemini AI for accurate text correction directly from the browser toolbar.",
@@ -62,7 +73,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/typo-grammar-extension"
     },
     {
-      id: 6,
+      id: 7,
       title: "N8N Lightweight RAG Bot",
       description: "Telegram chatbot implementing RAG concept using N8N, Google Sheets, and Gemini API",
       fullDescription: "A lightweight implementation of Retrieval-Augmented Generation (RAG) using N8N as a low-code orchestrator. The bot retrieves data from Google Sheets, augments prompts with relevant context, and generates responses using Gemini API. Features short-term memory and seamless Telegram integration.",
@@ -72,7 +83,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/n8n-lightweight-rag-bot"
     },
     {
-      id: 7,
+      id: 8,
       title: "Text Sentiment Analysis",
       description: "Advanced sentiment analysis system using Caikit framework and HuggingFace Transformers with gRPC",
       fullDescription: "A sophisticated sentiment analysis project that leverages the power of Caikit framework and HuggingFace Transformers to analyze text sentiment. The system uses gRPC for efficient client-server communication and provides accurate sentiment classification for text inputs. Built with Python and modern ML frameworks for robust performance.",
@@ -82,7 +93,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/-Text-Sentiment-Analysis-using-Caikit-and-Hugging-Face"
     },
     {
-      id: 8,
+      id: 9,
       title: "Anime Character Generator",
       description: "Deep Convolutional GAN implementation for generating realistic anime character faces using Keras",
       fullDescription: "A Deep Convolutional Generative Adversarial Network (DCGAN) project that generates realistic anime character faces. The system trains both generator and discriminator models to create unique anime characters with variations in style while maintaining visual authenticity. Implemented using Keras and TensorFlow on Kaggle.",
@@ -92,7 +103,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/Anime-character"
     },
     {
-      id: 9,
+      id: 10,
       title: "NLP with HuggingFace Transformers",
       description: "Comprehensive NLP pipeline implementation using HuggingFace Transformers for various language tasks",
       fullDescription: "A comprehensive Natural Language Processing project showcasing various NLP capabilities including sentiment analysis, text generation, summarization, and translation. Built using HuggingFace Transformers pipeline, the project demonstrates practical applications of modern NLP techniques for real-world language processing tasks.",
@@ -102,7 +113,7 @@ export const PortfolioSection = () => {
       githubUrl: "https://github.com/pradastikomyos/NLP_With_HF_Transformers"
     },
     {
-      id: 10,
+      id: 11,
       title: "IBM WatsonX LLM Plugin",
       description: "Command-line plugin integrating IBM WatsonX.ai with LLM for advanced AI capabilities",
       fullDescription: "A powerful CLI plugin that integrates IBM WatsonX.ai with the LLM command-line tool, providing access to cutting-edge machine learning models directly from the terminal. Features include model listing, embeddings, chat capabilities, and seamless integration with IBM Cloud IAM authentication.",
