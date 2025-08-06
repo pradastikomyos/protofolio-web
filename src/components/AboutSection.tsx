@@ -89,6 +89,66 @@ export const AboutSection = () => {
               </div>
             </div>
 
+            {/* Additional IBM Certificates */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <img 
+                  src="/ibm-deep-learning-certificate.jpg" 
+                  alt="IBM Deep Learning with TensorFlow Certificate" 
+                  className="relative w-full h-auto rounded-lg border border-border/50 shadow-lg group-hover:shadow-2xl transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                  <a 
+                    href="https://drive.google.com/drive/folders/11eYTiuhZFSlgrV6_M5iEHdj6T-sbGUYw?usp=drive_link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+                  >
+                    View Certificate
+                  </a>
+                </div>
+              </div>
+              
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <img 
+                  src="/ibm-gpu-acceleration-certificate.jpg" 
+                  alt="IBM Accelerating Deep Learning with GPU Certificate" 
+                  className="relative w-full h-auto rounded-lg border border-border/50 shadow-lg group-hover:shadow-2xl transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                  <a 
+                    href="https://drive.google.com/drive/folders/11eYTiuhZFSlgrV6_M5iEHdj6T-sbGUYw?usp=drive_link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+                  >
+                    View Certificate
+                  </a>
+                </div>
+              </div>
+              
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <img 
+                  src="/ibm-prompt-engineering-certificate.jpg" 
+                  alt="IBM Prompt Engineering Certificate" 
+                  className="relative w-full h-auto rounded-lg border border-border/50 shadow-lg group-hover:shadow-2xl transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                  <a 
+                    href="https://drive.google.com/drive/folders/11eYTiuhZFSlgrV6_M5iEHdj6T-sbGUYw?usp=drive_link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+                  >
+                    View Certificate
+                  </a>
+                </div>
+              </div>
+            </div>
+
             {/* Divider */}
             <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8"></div>
             
