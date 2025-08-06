@@ -56,14 +56,20 @@ export const HeroSection = () => {
               CONTACT ME
             </Button>
           </Link>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="portfolio-hover-lift border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background px-8 py-3 text-lg"
+          <a 
+            href="https://drive.google.com/file/d/1YpYts9vYohpOMofKsHDoIfQ_fB7wM2LE/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Download className="mr-2" size={20} />
-            Download CV
-          </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="portfolio-hover-lift border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background px-8 py-3 text-lg"
+            >
+              <Download className="mr-2" size={20} />
+              Download Resume
+            </Button>
+          </a>
         </div>
 
         {/* Quick Navigation */}
