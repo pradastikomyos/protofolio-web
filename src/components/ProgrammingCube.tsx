@@ -45,14 +45,14 @@ const RotatingCube = () => {
     }
   });
 
-  // Load different textures for each face - AI/ML focused tech stack
+  // Load different textures for each face - full-stack focused tech stack
   const textures = useTexture([
     '/react-logo.png',        // Front - React for frontend
-    '/IBM-logo.png',          // Back - IBM (your internship/certification focus)
-    '/python.png',            // Top - Python for data science
-    '/TensorFlow.png',        // Bottom - TensorFlow for ML
-    '/Keras.png',             // Right - Keras for deep learning
-    '/java-logo.png'          // Left - Java for backend
+    '/TypeScript.png',        // Back - TypeScript for app development
+    '/html-logo.png',         // Top - HTML/CSS foundation
+    '/supabase-logo.png',     // Bottom - PostgreSQL-backed app data
+    '/python-logo.png',       // Right - AI automation and scripting
+    '/java-logo.png'          // Left - backend fundamentals
   ]);
 
   const logoPositions: [number, number, number][] = [

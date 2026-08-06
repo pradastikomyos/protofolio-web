@@ -8,6 +8,15 @@ export const PortfolioSection = () => {
 
   const projects = [
     {
+      id: 12,
+      title: "Spark Stage 55 - Ticketing and Commerce Platform",
+      description: "Production B2C platform for ticket booking, merchandise sales, QR pickup, payment flows, and admin operations",
+      fullDescription: "Spark Stage 55 is a live full-stack web platform built for ticket booking, merchandise commerce, QR-based pickup, and admin operations. As Full-Stack Software Engineer on a project contract, I developed booking and commerce flows with React and TypeScript, integrated DOKU checkout and payment webhooks, designed PostgreSQL-backed order and inventory flows, and prepared handover documentation for owners, admins, designers, and the continuation developer. The platform served 3,000+ registered users and processed 500+ successful transactions worth IDR 40M+ in one observed week.",
+      technologies: ["React", "TypeScript", "PostgreSQL", "Payment Gateway", "Webhooks", "Admin Dashboard", "Git"],
+      gradient: "from-blue-50 via-sky-50 to-cyan-50",
+      logos: ["/react-logo.png", "/TypeScript.png", "/supabase-logo.png"]
+    },
+    {
       id: 1,
       title: "PlantWise - Advanced AI Plant Disease Detection",
       description: "Enterprise-level AI plant disease detection system with crop recommendation using CNN and Random Forest algorithms",
@@ -124,6 +133,25 @@ export const PortfolioSection = () => {
     }
   ];
 
+  const projectDisplayOrder = new Map([
+    [12, 0],
+    [2, 1],
+    [4, 2],
+    [5, 3],
+    [3, 4],
+    [6, 5],
+    [7, 6],
+    [1, 7],
+    [8, 8],
+    [9, 9],
+    [10, 10],
+    [11, 11],
+  ]);
+
+  const sortedProjects = [...projects].sort(
+    (a, b) => (projectDisplayOrder.get(a.id) ?? 99) - (projectDisplayOrder.get(b.id) ?? 99)
+  );
+
   return (
     <section className="min-h-screen py-20 px-6 bg-background">
       <div className="container mx-auto max-w-6xl">
@@ -133,15 +161,36 @@ export const PortfolioSection = () => {
             <span className="portfolio-text-gradient">Portfolio</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent projects and technical achievements
+            Full-stack web platforms, admin systems, payment flows, and AI automation projects built with practical delivery in mind.
           </p>
         </div>
 
+        <Card className="portfolio-card-gradient border border-border/50 p-6 mb-10 portfolio-slide-up">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Frontend</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">HTML, CSS, JavaScript, TypeScript, React, Next.js</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Backend</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">PHP, Laravel, Node.js, FastAPI, REST APIs, Webhooks</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Database</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">PostgreSQL, MySQL, transactional flows, inventory data</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Tools</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Git, GitHub, Postman, Vercel, Cloudflare, Docker</p>
+            </div>
+          </div>
+        </Card>
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={project.id} 
+          {sortedProjects.map((project, index) => (
+            <Card
+              key={project.id}
               className={`portfolio-card-gradient border border-border/50 overflow-hidden portfolio-hover-lift portfolio-slide-up group cursor-pointer portfolio-project-card ${
                 expandedProject === project.id ? 'md:col-span-2 expanded portfolio-expand' : ''
               }`}
@@ -161,8 +210,8 @@ export const PortfolioSection = () => {
                               <div key={logoIndex} className={`w-16 h-16 rounded-xl bg-gradient-to-br ${project.gradient} p-2 transition-all duration-500 transform shadow-lg ${
                                 expandedProject === project.id ? 'portfolio-logo-animate' : ''
                               }`}>
-                                <img 
-                                  src={logo} 
+                                <img
+                                  src={logo}
                                   alt={`${project.title} logo ${logoIndex + 1}`}
                                   className="w-full h-full object-contain drop-shadow-sm"
                                 />
@@ -173,8 +222,8 @@ export const PortfolioSection = () => {
                           <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${project.gradient} p-3 transition-all duration-500 transform shadow-lg ${
                             expandedProject === project.id ? 'portfolio-logo-animate' : ''
                           }`}>
-                            <img 
-                              src={project.logo as string} 
+                            <img
+                              src={project.logo as string}
                               alt={`${project.title} logo`}
                               className="w-full h-full object-contain drop-shadow-sm"
                             />
@@ -195,7 +244,7 @@ export const PortfolioSection = () => {
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.technologies.map((tech, techIndex) => (
-                      <span 
+                      <span
                         key={techIndex}
                         className="px-4 py-2 text-sm bg-secondary/50 text-secondary-foreground rounded-full border border-border/30 portfolio-bounce hover:scale-105"
                       >
@@ -206,23 +255,24 @@ export const PortfolioSection = () => {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-4">
-                    <Button 
-                      className="portfolio-bounce bg-primary text-primary-foreground hover:bg-primary-glow px-6 py-3"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // If no siteUrl, use githubUrl for "Go to the Site" button
-                        const targetUrl = project.siteUrl || project.githubUrl;
-                        if (targetUrl) {
-                          window.open(targetUrl, '_blank');
-                        }
-                      }}
-                    >
-                      <ExternalLink size={16} className="mr-2" />
-                      Go to the Site
-                    </Button>
+                    {(project.siteUrl || project.githubUrl) && (
+                      <Button
+                        className="portfolio-bounce bg-primary text-primary-foreground hover:bg-primary-glow px-6 py-3"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const targetUrl = project.siteUrl || project.githubUrl;
+                          if (targetUrl) {
+                            window.open(targetUrl, '_blank');
+                          }
+                        }}
+                      >
+                        <ExternalLink size={16} className="mr-2" />
+                        Go to the Site
+                      </Button>
+                    )}
                     {project.githubUrl && project.siteUrl && (
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="portfolio-bounce hover:bg-secondary px-6 py-3"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -233,8 +283,8 @@ export const PortfolioSection = () => {
                         View Code
                       </Button>
                     )}
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       className="portfolio-bounce hover:bg-secondary/50"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -257,8 +307,8 @@ export const PortfolioSection = () => {
                           <div className="flex gap-3 items-center justify-center">
                             {project.logos.map((logo, logoIndex) => (
                               <div key={logoIndex} className="w-20 h-20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                                <img 
-                                  src={logo} 
+                                <img
+                                  src={logo}
                                   alt={`${project.title} logo ${logoIndex + 1}`}
                                   className="w-full h-full object-contain drop-shadow-xl"
                                 />
@@ -268,8 +318,8 @@ export const PortfolioSection = () => {
                         ) : 'logo' in project && project.logo ? (
                           /* Single large centered logo */
                           <div className="w-28 h-28 flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-white/10 backdrop-blur-sm rounded-2xl p-4">
-                            <img 
-                              src={project.logo as string} 
+                            <img
+                              src={project.logo as string}
                               alt={`${project.title} logo`}
                               className="w-full h-full object-contain drop-shadow-xl"
                             />
@@ -284,26 +334,26 @@ export const PortfolioSection = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                       </div>
                     )}
-                    
+
                     {/* Project Actions */}
                     <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button 
-                        size="sm" 
-                        variant="secondary" 
-                        className="portfolio-bounce hover:scale-110"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (project.githubUrl) {
+                      {project.githubUrl && (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          className="portfolio-bounce hover:scale-110"
+                          onClick={(e) => {
+                            e.stopPropagation();
                             window.open(project.githubUrl, '_blank');
-                          }
-                        }}
-                      >
-                        <Github size={16} />
-                      </Button>
+                          }}
+                        >
+                          <Github size={16} />
+                        </Button>
+                      )}
                       {(project.siteUrl || project.githubUrl) && (
-                        <Button 
-                          size="sm" 
-                          variant="secondary" 
+                        <Button
+                          size="sm"
+                          variant="secondary"
                           className="portfolio-bounce hover:scale-110"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -333,7 +383,7 @@ export const PortfolioSection = () => {
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech, techIndex) => (
-                        <span 
+                        <span
                           key={techIndex}
                           className="px-3 py-1 text-sm bg-secondary/50 text-secondary-foreground rounded-full border border-border/30"
                         >
@@ -343,8 +393,8 @@ export const PortfolioSection = () => {
                     </div>
 
                     {/* View Button */}
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="w-full portfolio-bounce hover:bg-primary hover:text-primary-foreground hover:border-primary"
                     >
                       VIEW PROJECT

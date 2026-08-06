@@ -34,14 +34,14 @@ export const HeroSection = () => {
         {/* Title */}
         <div className="portfolio-slide-up mb-4" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-3xl md:text-5xl font-light text-foreground">
-            AI engineer.
+            Full-Stack Developer.
           </h2>
         </div>
 
         {/* Subtitle */}
         <div className="portfolio-slide-up mb-12" style={{ animationDelay: '0.6s' }}>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            System Information (CS equivalent) Student at STIKOM Yos Sudarso, Purwokerto, Indonesia
+            I build web platforms, admin systems, payment flows, and AI automation tools using React, TypeScript, PostgreSQL, PHP/Laravel, and modern APIs.
           </p>
         </div>
 

@@ -5,12 +5,12 @@ import { Card } from '@/components/ui/card';
 
 export const AboutSection = () => {
   const languages = [
-    { name: 'Python', years: 1, value: 85, color: 'bg-yellow-400' },
-    { name: 'JavaScript', years: 1, value: 80, color: 'bg-green-500' },
-    { name: 'TypeScript', years: 1, value: 75, color: 'bg-blue-500' },
-    { name: 'HTML/CSS', years: 1, value: 70, color: 'bg-orange-500' },
-    { name: 'SQL', years: 1, value: 60, color: 'bg-purple-500' },
-    { name: 'Java', years: 1, value: 50, color: 'bg-red-500' },
+    { name: 'React / TypeScript', years: 1, value: 85, color: 'bg-blue-500' },
+    { name: 'JavaScript / HTML / CSS', years: 1, value: 82, color: 'bg-yellow-400' },
+    { name: 'PostgreSQL / SQL', years: 1, value: 76, color: 'bg-purple-500' },
+    { name: 'PHP / Laravel', years: 1, value: 62, color: 'bg-red-500' },
+    { name: 'MySQL', years: 1, value: 58, color: 'bg-orange-500' },
+    { name: 'Python / AI Automation', years: 1, value: 72, color: 'bg-green-500' },
   ];
 
   return (
@@ -24,10 +24,10 @@ export const AboutSection = () => {
               About me
             </h2>
             <p className="text-muted-foreground mb-10 leading-relaxed">
-              An accomplished AI Engineer, recognized by IBM for excellence in Advanced AI, achieving a perfect Grade 'A' score. Expertise in the full MLOps lifecycle and hands-on proficiency with enterprise platforms like IBM Watsonx. Passionate about building impactful solutions, with a portfolio of end-to-end LLM applications and a proven ability to deliver results.
+              Final-year Information Systems student focused on full-stack web development, database-backed applications, payment integrations, and AI automation. I have built production flows for ticket booking, merchandise sales, QR pickup, admin operations, and handover documentation, with React, TypeScript, PostgreSQL, and experience adapting to PHP/Laravel and MySQL-based stacks.
             </p>
             
-            <h3 className="text-2xl font-bold text-yellow-400 mb-6">Languages</h3>
+            <h3 className="text-2xl font-bold text-yellow-400 mb-6">Core Skills</h3>
             <div className="space-y-5">
               {languages.map((lang) => (
                 <div key={lang.name}>
