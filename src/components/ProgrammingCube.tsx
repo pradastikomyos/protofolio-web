@@ -1,180 +1,179 @@
-import { useRef, Suspense, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useTexture, Environment } from '@react-three/drei';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
-const RotatingCube = () => {
-  const groupRef = useRef<THREE.Group>(null);
+type TechItem = {
+  label: string;
+  texture: string;
+  position: [number, number, number];
+};
+
+const techItems: TechItem[] = [
+  { label: 'React', texture: '/react-logo.png', position: [0, 1.45, 0] },
+  { label: 'TypeScript', texture: '/TypeScript.png', position: [1.8, 0.55, 0.7] },
+  { label: 'PostgreSQL', texture: '/supabase-logo.png', position: [1.45, -0.95, -0.65] },
+  { label: 'HTML/CSS', texture: '/html-logo.png', position: [-1.45, -0.95, 0.65] },
+  { label: 'Python', texture: '/python-logo.png', position: [-1.8, 0.55, -0.7] },
+  { label: 'Java', texture: '/java-logo.png', position: [0, -1.55, 0] },
+];
+
+const TechBadge = ({
+  label,
+  texture,
+  position,
+  onHoverChange,
+}: {
+  label: string;
+  texture: THREE.Texture;
+  position: [number, number, number];
+  onHoverChange: (hovered: boolean) => void;
+}) => {
+  const spriteRef = useRef<THREE.Sprite>(null);
   const [hovered, setHovered] = useState(false);
-  const { pointer } = useThree();
 
-  // Store the rotation when hover starts
-  const frozenRotation = useRef({ x: 0, y: 0 });
+  useFrame((_, delta) => {
+    if (!spriteRef.current) return;
 
-  useFrame((state, delta) => {
-    if (groupRef.current) {
-      if (hovered) {
-        // STOP rotation and gently follow cursor
-        const targetX = frozenRotation.current.x + pointer.y * 0.15;
-        const targetY = frozenRotation.current.y + pointer.x * 0.15;
-
-        // Smooth interpolation to cursor position
-        groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetX, delta * 3);
-        groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetY, delta * 3);
-
-        // Gentle scale up
-        const targetScale = 1.05;
-        const currentScale = groupRef.current.scale.x;
-        const newScale = THREE.MathUtils.lerp(currentScale, targetScale, delta * 4);
-        groupRef.current.scale.setScalar(newScale);
-      } else {
-        // Normal spinning rotation
-        groupRef.current.rotation.x = state.clock.elapsedTime * 0.204;
-        groupRef.current.rotation.y = state.clock.elapsedTime * 0.306;
-
-        // Store current rotation for when hover starts
-        frozenRotation.current.x = groupRef.current.rotation.x;
-        frozenRotation.current.y = groupRef.current.rotation.y;
-
-        // Normal scale
-        const targetScale = 1.0;
-        const currentScale = groupRef.current.scale.x;
-        const newScale = THREE.MathUtils.lerp(currentScale, targetScale, delta * 4);
-        groupRef.current.scale.setScalar(newScale);
-      }
-    }
+    const targetScale = hovered ? 0.86 : 0.68;
+    const nextScale = THREE.MathUtils.damp(spriteRef.current.scale.x, targetScale, 9, delta);
+    spriteRef.current.scale.setScalar(nextScale);
   });
 
-  // Load different textures for each face - full-stack focused tech stack
-  const textures = useTexture([
-    '/react-logo.png',        // Front - React for frontend
-    '/TypeScript.png',        // Back - TypeScript for app development
-    '/html-logo.png',         // Top - HTML/CSS foundation
-    '/supabase-logo.png',     // Bottom - PostgreSQL-backed app data
-    '/python-logo.png',       // Right - AI automation and scripting
-    '/java-logo.png'          // Left - backend fundamentals
-  ]);
-
-  const logoPositions: [number, number, number][] = [
-    [0, 0, 1.3],   // Front
-    [0, 0, -1.3],  // Back
-    [0, 1.3, 0],   // Top
-    [0, -1.3, 0],  // Bottom
-    [1.3, 0, 0],   // Right
-    [-1.3, 0, 0]   // Left
-  ];
-
-  const logoRotations: [number, number, number][] = [
-    [0, 0, 0],                      // Front
-    [0, Math.PI, 0],                // Back
-    [-Math.PI / 2, 0, 0],           // Top
-    [Math.PI / 2, 0, 0],            // Bottom
-    [0, Math.PI / 2, 0],            // Right
-    [0, -Math.PI / 2, 0]            // Left
-  ];
+  const setBadgeHover = (nextHovered: boolean) => {
+    setHovered(nextHovered);
+    onHoverChange(nextHovered);
+  };
 
   return (
-    <group
-      ref={groupRef}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+    <sprite
+      ref={spriteRef}
+      position={position}
+      onPointerOver={(event) => {
+        event.stopPropagation();
+        setBadgeHover(true);
+      }}
+      onPointerOut={(event) => {
+        event.stopPropagation();
+        setBadgeHover(false);
+      }}
+      userData={{ label }}
     >
-      {/* Frosted glass cube */}
+      <spriteMaterial
+        map={texture}
+        transparent
+        alphaTest={0.08}
+        opacity={hovered ? 1 : 0.94}
+        depthWrite={false}
+      />
+    </sprite>
+  );
+};
+
+const TechOrbit = () => {
+  const orbitRef = useRef<THREE.Group>(null);
+  const [hoveredBadge, setHoveredBadge] = useState(false);
+  const textures = useTexture(techItems.map((item) => item.texture));
+
+  useEffect(() => {
+    textures.forEach((texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.anisotropy = 8;
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.needsUpdate = true;
+    });
+  }, [textures]);
+
+  useFrame((state, delta) => {
+    if (!orbitRef.current) return;
+
+    const speed = hoveredBadge ? 0.08 : 0.28;
+    orbitRef.current.rotation.y += delta * speed;
+    orbitRef.current.rotation.x = THREE.MathUtils.damp(
+      orbitRef.current.rotation.x,
+      Math.sin(state.clock.elapsedTime * 0.45) * 0.08,
+      4,
+      delta
+    );
+  });
+
+  return (
+    <group ref={orbitRef}>
       <mesh>
-        <boxGeometry args={[2.5, 2.5, 2.5]} />
-        <meshPhysicalMaterial
-          color="#ffffff"
-          roughness={0.9}
-          transmission={1}
-          thickness={1}
-          transparent
-          opacity={0.6}
-          envMapIntensity={1}
-        />
+        <icosahedronGeometry args={[0.72, 1]} />
+        <meshStandardMaterial color="#2563eb" roughness={0.32} metalness={0.18} />
       </mesh>
 
-      {/* BOLD white edge lines */}
-      <lineSegments>
-        <edgesGeometry args={[new THREE.BoxGeometry(2.5, 2.5, 2.5)]} />
-        <lineBasicMaterial
-          color="#ffffff"
-          transparent={false}
-          linewidth={12}
-          toneMapped={false}
-        />
-      </lineSegments>
+      <mesh>
+        <icosahedronGeometry args={[0.78, 1]} />
+        <meshBasicMaterial color="#93c5fd" wireframe transparent opacity={0.34} />
+      </mesh>
 
-      {/* Logo planes positioned outside the cube */}
-      {textures.map((texture, index) => (
-        <mesh key={index} position={logoPositions[index]} rotation={logoRotations[index]}>
-          <planeGeometry args={[1.8, 1.8]} />
-          <meshStandardMaterial
-            map={texture}
-            transparent={true}
-            alphaTest={0.1}
-            side={THREE.DoubleSide}
-          />
-        </mesh>
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[2.08, 0.008, 8, 120]} />
+        <meshBasicMaterial color="#60a5fa" transparent opacity={0.28} />
+      </mesh>
+
+      <mesh rotation={[0, Math.PI / 2, 0]}>
+        <torusGeometry args={[2.08, 0.008, 8, 120]} />
+        <meshBasicMaterial color="#facc15" transparent opacity={0.2} />
+      </mesh>
+
+      {techItems.map((item, index) => (
+        <TechBadge
+          key={item.label}
+          label={item.label}
+          texture={textures[index]}
+          position={item.position}
+          onHoverChange={setHoveredBadge}
+        />
       ))}
     </group>
   );
 };
 
+const LoadingOrbit = () => (
+  <group>
+    <mesh>
+      <icosahedronGeometry args={[0.72, 1]} />
+      <meshStandardMaterial color="#2563eb" roughness={0.4} />
+    </mesh>
+    <mesh rotation={[Math.PI / 2, 0, 0]}>
+      <torusGeometry args={[2.08, 0.008, 8, 96]} />
+      <meshBasicMaterial color="#60a5fa" transparent opacity={0.28} />
+    </mesh>
+  </group>
+);
+
 export const ProgrammingCube = () => {
   return (
-    <div className="w-full h-64 md:h-80 portfolio-fade-in">
+    <div className="w-full h-72 md:h-96 portfolio-fade-in">
       <Canvas
-        camera={{ position: [0, 1, 6], fov: 45 }}
+        camera={{ position: [0, 0.25, 5.8], fov: 42 }}
+        dpr={[1, 1.75]}
         gl={{
           antialias: true,
           alpha: true,
-          powerPreference: "high-performance"
+          powerPreference: 'high-performance',
         }}
       >
-        {/* Environment for realistic reflections */}
-        <Environment preset="studio" />
+        <ambientLight intensity={0.65} />
+        <directionalLight position={[4, 5, 5]} intensity={1.6} />
+        <pointLight position={[-3, -2, 4]} intensity={0.8} color="#facc15" />
 
-        {/* Enhanced lighting setup */}
-        <ambientLight intensity={0.4} />
-
-        {/* Key light from top-right */}
-        <directionalLight
-          position={[5, 8, 3]}
-          intensity={2.0}
-          color="#ffffff"
-          castShadow
-        />
-
-        {/* Fill light from left */}
-        <directionalLight
-          position={[-3, 2, 4]}
-          intensity={0.8}
-          color="#e6f3ff"
-        />
-
-        {/* Rim light for glass edges */}
-        <pointLight
-          position={[0, 0, 8]}
-          intensity={1.2}
-          color="#ffffff"
-        />
-
-        {/* Accent light for depth */}
-        <pointLight
-          position={[-5, -3, -2]}
-          intensity={0.5}
-          color="#64ffda"
-        />
-
-        <Suspense fallback={
-          <mesh>
-            <boxGeometry args={[2.5, 2.5, 2.5]} />
-            <meshStandardMaterial color="#666666" />
-          </mesh>
-        }>
-          <RotatingCube />
+        <Suspense fallback={<LoadingOrbit />}>
+          <TechOrbit />
         </Suspense>
       </Canvas>
+
+      <div className="mt-2 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+        {techItems.map((item) => (
+          <span key={item.label} className="rounded-full border border-border/50 bg-background/40 px-3 py-1">
+            {item.label}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
