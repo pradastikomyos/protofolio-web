@@ -272,22 +272,41 @@ export const AboutSection = () => {
                   <div className="absolute -left-[0.55rem] top-1 w-4 h-4 bg-primary rounded-full"></div>
                   <div className="flex items-center gap-3 mb-2">
                     <Calendar size={16} className="text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">Aug 2024 – Dec 2024</span>
+                    <span className="text-sm text-muted-foreground">Dec 2025 - Jun 2026</span>
                   </div>
-                  <h4 className="font-semibold text-foreground mb-1">Machine Learning Operations Engineer</h4>
-                  <p className="text-sm font-medium text-blue-400 mb-1">IBM Advanced AI Scholar</p>
+                  <h4 className="font-semibold text-foreground mb-1">Full-Stack Software Engineer (Project Contract)</h4>
+                  <p className="text-sm font-medium text-blue-400 mb-1">Spark Stage 55 / PT Herbio Herbal Alami</p>
                   <div className="flex items-center gap-2 mb-2">
                     <MapPin size={14} className="text-muted-foreground" />
-                    <p className="text-muted-foreground text-sm">Infinite Learning & IBM | MSIB Kampus Merdeka | Batam, Indonesia</p>
+                    <p className="text-muted-foreground text-sm">Bandung, Indonesia</p>
                   </div>
                   <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                    <li>Achieved perfect Grade 'A' (95/100) in IBM Advanced AI program for exceptional collaboration on enterprise-level AI projects</li>
-                    <li>Spearheaded deployment of MobileNetV2 computer vision model for plant disease classification in Plantwise mobile application</li>
-                    <li>Architected automated CI/CD pipeline using GitLab CI/CD and Docker, reducing manual deployment time by 90%</li>
-                    <li>Engineered monitoring framework that improved classification accuracy by 15% through data-driven feedback loops</li>
+                    <li>Developed and maintained a live full-stack B2C platform for ticket booking, merchandise sales, QR pickup, and admin operations.</li>
+                    <li>Implemented React and TypeScript booking and commerce flows with DOKU checkout and payment webhooks.</li>
+                    <li>Designed PostgreSQL-backed flows for payments, orders, and inventory using idempotent updates for async payment callbacks.</li>
+                    <li>Supported 3,000+ registered users and 500+ successful transactions worth IDR 40M+ in one observed week.</li>
+                    <li>Coordinated with owners, admins, designers, and the continuation developer on priorities, technical tradeoffs, and handover documentation.</li>
                   </ul>
                 </div>
-                
+
+                <div className="border-l-2 border-primary/30 pl-6 relative">
+                  <div className="absolute -left-[0.55rem] top-1 w-4 h-4 bg-primary rounded-full"></div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Calendar size={16} className="text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">Aug 2024 - Jan 2025</span>
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-1">IBM Advanced AI Scholar (Machine Learning / MLOps)</h4>
+                  <p className="text-sm font-medium text-blue-400 mb-1">Infinite Learning (PT Kinema Systrans Multimedia) x IBM</p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <MapPin size={14} className="text-muted-foreground" />
+                    <p className="text-muted-foreground text-sm">Batam, Indonesia</p>
+                  </div>
+                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Completed MSIB Batch 7 in IBM Academy: Advanced AI while working in a cross-university team across web, mobile, and ML/AI research.</li>
+                    <li>Developed a Random Forest model for Plantwise and deployed the ML service on IBM watsonx using Docker and Postman for team testing and integration.</li>
+                    <li>Handled ML/MLOps work including deployment checks, monitoring, and sleep optimization to control runtime cost during inactive periods.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
